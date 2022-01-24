@@ -1,3 +1,4 @@
+#from crypt import methods
 import os
 from uuid import uuid4
 from flask import Flask, render_template, request,send_from_directory
@@ -19,8 +20,27 @@ APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 def index():
     return render_template("upload.html")
 
+#@app.route("/upload",methods=["GET","POST"])
+#def upload():
+#    form = uploadform()
+#    if form.is_submitted():
+#        result= request.form
+#        return render_template('user.html',result=result)
+#    return render_template('upload.html',form=form)
+
+
 @app.route("/upload", methods=["POST"])
 def upload():
+    paitentname = request.form.get("paitentname")
+    print(paitentname)
+    paitentage = request.form.get("paitentage")
+    print(paitentage)
+    gender = request.form.get("gender")
+    print(gender)
+    imageid= request.form.get("imageid")
+    print(imageid)
+    clinicname=request.form.get("clinicname")
+    print(clinicname)
     # Image folder 
     target = os.path.join(APP_ROOT, 'images/')
     # target = os.path.join(APP_ROOT, 'static/')
