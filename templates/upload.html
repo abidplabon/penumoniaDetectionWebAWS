@@ -6,7 +6,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet" type="text/css">
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
-    <!--<link rel="stylesheet" href="style.css">-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
     <meta name="google-site-verification" content="ruPP7Z-1iMcsvrbicR-wNJ79VHatSn1JepKnsDgSDlw" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,7 +27,7 @@
       </div>
         <br>
       <div>
-        <input id="file-picker1" type="file"  accept="image/*" name="file" capture="camera" class="form-control"  onchange="loadReportFile(event)" hidden/>
+        <input id="file-picker1" type="file"  accept="image/*" name="file1" capture="camera" class="form-control"  onchange="loadReportFile(event)" hidden/>
         <label id="file-picker1" for="file-picker1">Choose Report Image</label>
         <img id="output1" width="200" />
       </div>
@@ -92,23 +91,23 @@
       <div class="left-side">
         <div class="address details">
       <div>
-        <input id="file-picker" type="file"  accept="*/dicom,.dcm, image/dcm, */dcm, .dicom" name="file" capture="camera" class="form-control"  onchange="loadFile(event)" hidden/>
-        <label id="file-picker" for="file-picker">Choose X-Ray</label>
-        <img id="output" width="200" />
+        <input id="file-picker2" type="file"  accept="*/dicom,.dcm, image/dcm, */dcm, .dicom" name="file" capture="camera" class="form-control"  onchange="loadFile(event)" hidden/>
+        <label id="file-picker2" for="file-picker2">Choose X-Ray</label>
+        <img id="output2" width="200" />
       </div>
         <br>
       <div>
-        <input id="file-picker1" type="file"  accept="image/*" name="file" capture="camera" class="form-control"  onchange="loadReportFile(event)" hidden/>
-        <label id="file-picker1" for="file-picker1">Choose Report Image</label>
-        <img id="output1" width="200" />
+        <input id="file-picker3" type="file"  accept="image/*" name="file1" capture="camera" class="form-control"  onchange="loadReportFile(event)" hidden/>
+        <label id="file-picker3" for="file-picker3">Choose Report Image</label>
+        <img id="output3" width="200" />
       </div>
         <script>
             var loadFile = function(event) {
-	          var image = document.getElementById('output');
+	          var image = document.getElementById('output2');
 	          image.src = URL.createObjectURL(event.target.files[0]);
             };
             var loadReportFile = function(event) {
-	          var image = document.getElementById('output1');
+	          var image = document.getElementById('output3');
 	          image.src = URL.createObjectURL(event.target.files[0]);
             };
         </script>

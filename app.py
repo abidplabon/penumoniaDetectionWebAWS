@@ -9,8 +9,13 @@ import pandas as pd
 from oauth2client.service_account import ServiceAccountCredentials
 from googleapiclient.discovery import build
 from google.oauth2 import service_account
+import boto3
 ##graph = tf.get_default_graph()
 ##import detection
+
+
+#s3 = boto3.client('s3')
+#s3.upload_file(f'{destination}','Bucket_Name',f'{filename}.dcm')
 
 # define the scope
 scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
@@ -92,15 +97,13 @@ def upload():
 
     for upload in request.files.getlist("file"):
         file_name = str(uuid4())
-
         print(file_name)
-
         destination = "/".join([target, f'{file_name}.dcm'])
-        destinationReport = "/".join([targetReport, f'{file_name}.jpg'])
-        
         upload.save(destination)
-        upload.save(destinationReport)
-    
+    for uploadReport in request.files.getlist("file1"):
+        destinationReport = "/".join([targetReport, f'{file_name}.jpg'])
+        uploadReport.save(destinationReport)
+        
     elements=[[file_name,paitentname,gender,paitentage,clinicname,imageid,type,date,doctorname]]
     data=pd.DataFrame.from_dict(elements)
     # get all the records of the data
